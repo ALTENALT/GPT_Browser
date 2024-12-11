@@ -6,6 +6,7 @@ namespace GPT_Browser_Ehe
 {
     public partial class ChatGPT : Form
     {
+        private string urlText = "https://chatgpt.com";
         public ChatGPT()
         {
             InitializeComponent();
@@ -15,12 +16,12 @@ namespace GPT_Browser_Ehe
         private async void InitializeBrowser()
         {
             await webView2.EnsureCoreWebView2Async(null);
-            webView2.Source = new Uri("https://chatgpt.com");
+            webView2.Source = new Uri(urlText);
         }
 
         private void webView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
-            if (e.Uri != "https://chatgpt.com")
+            if (e.Uri != urlText)
             {
                 e.Cancel = true;
             }
